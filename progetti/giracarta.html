@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #d63c28;
+  color: white;
+  transform: rotateY(180deg);
+}
+</style>
+</head>
+<body>
+
+<h1>Flip Card Izzo</h1>
+<h3>per diventare un vero uomo devi conoscere sia la vittoria che la sconfitta sia il sorriso che le lacrime, non vergognarti mai di piangere, l'importante è che poi... ... ritrovi la forza per andare avanti</h3>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://static.basketballstore.net/image/cache/catalog/basketball%20store/accessori/palloni_canestri/GK2483-adidas-lil-stripe-pallone-basket-sorriso-smile6-638x638.jpg" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <h1>Izzo Daniele</h1>
+      <p>Studente presso l'istituto tecnico JCMaxwell
+      </p>
+      <p>12 / 10 / 2006</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
