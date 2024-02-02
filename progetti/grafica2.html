@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genera N Div</title>
+  <style>
+    #quadrato {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .genera {
+      width: 10px;
+      height: 10px;
+      border: 1px solid black;
+      margin: 2px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <label for="Ndiv">inserire quanti quadrati si vuole generare </label>
+  <input type="number" id="Ndiv" min="1" value="1">
+  <button onclick="genera()">Genera quadrati</button>
+
+  <div id="quadrato"></div>
+  <script>
+    function genera() {
+      var Ndiv = document.getElementById("Ndiv").value;
+      var divContainer = document.getElementById("quadrato");   
+      divContainer.innerHTML = "";
+
+      for (var i = 0; i < Ndiv; i++) {
+        var nuovoDiv = document.createElement("div");
+        nuovoDiv.className = "genera";
+        divContainer.appendChild(nuovoDiv);
+      }
+    }
+  </script>
+
+</body>
+</html>
