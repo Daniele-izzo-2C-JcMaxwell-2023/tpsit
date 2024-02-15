@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+  #container {
+    width:600px;
+    height:600px;
+    border: 1px solid black;
+    position: absolute;
+    align-items: center;
+  }
+  #bottone {
+    position: absolute;
+    top: 60px; left: 251px;
+    align-items: center;
+  }
+  #stampa {
+    text-align: center;
+  }
+</style>
+</head>
+
+<body>
+<div id="container">
+  <p id="stampa">Premi il pulsante per generare 1000 numeri casuali compresi tra 1 e 6</p>
+  <button id="bottone" onclick="stampa()">stampa</button>
+  <br>
+  <p id="risultato"></p>
+  <script>
+    function stampa() {
+      let numero;
+      let i=0;
+      document.getElementById("risultato").innerHTML =  " ";
+      do {
+        numero = Math.floor((Math.random() * 6) + 1);
+        document.getElementById("risultato").innerHTML += numero + " ";
+        i++;
+      }
+      while (i<1000)
+    }
+  </script>
+</body>
+
+</html>
