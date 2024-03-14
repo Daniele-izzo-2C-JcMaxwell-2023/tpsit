@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Massa corporea</title>
+</head>
+<style>
+
+
+</style>
+<body>
+
+
+    <p>Calcolo della tua massa corporea</p>
+    <div id="massa">
+    <p>Inserisci il peso in Kg</p>
+    <input type="number" id="Massacorpo"/>
+    <p>Inserisci l'altezza in metri</p>
+    <input type="number" id="altezza"/>
+    </div>
+    <br>
+    <button onclick="Calcola()">calcola la massa corporea</button>
+    <p id="IMC">    </p>
+
+
+
+
+    <script>
+        function Calcola(){
+            let peso=document.getElementById("Massacorpo").value;
+            let altezza=document.getElementById("altezza").value;
+            let IMC = peso/altezza*altezza;
+            document. getElementById("IMC").innerHTML = IMC;
+            if (IMC < 18.5) {
+                document.getElementById("IMC").innerHTML += "Sei in Sottopeso";
+            }
+           else if (IMC >= 18.5 && IMC <25) {
+                document.getElementById("IMC").innerHTML += "Sei in normopeso";
+            }
+            else if (IMC >= 25 && IMC <30) {
+                document.getElementById("IMC").innerHTML += "Sei in sovrappeso";
+            }
+            else if (IMC > 30) {
+                document.getElementById("IMC").innerHTML += "Sei obeso";
+            }
+        }
+    </script>
+</body>
+</html>
