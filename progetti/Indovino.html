@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    #container {
+      width: 340px;
+      height: 300px;
+      position: relative;
+      border: solid black;
+      background: purple;
+    }
+    #testo {
+      text-align: center;
+    }
+    #contatore {
+      text-align: center;
+      align-items: center;
+    }
+    #NumeriCasuali {
+      text-align: center;
+      align-items: center;
+    }
+    #Frase {
+      text-align: center;
+      align-items: center;
+    }
+    #input {
+      padding: 5px;
+      border: solid black;
+      text-align: center;
+      position: absolute;
+      top: 40%;
+      left: 23%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <p id="testo">contatore da 3 a 0 </p>
+    <p id="contatore">3</p>
+    <p id="NumeriCasuali"></p>
+    <p id="Frase">Inserisci il numero che manca </p>
+    <input id="input" type="text" name="elname"><br><br>
+    <p id="punteggio"></p>
+
+  </div>
+  <script>
+    var cont = 3;
+    let punteggio = 0;
+    var timer = setInterval(function(){
+      cont--;
+      document.getElementById("contatore").innerHTML = cont;
+    if (cont==0) {
+      clearInterval(timer);
+      NumeroCasuale();
+      document.getElementById("contatore").style.display = "none";
+    }
+    } ,1000);
+
+    function NumeroCasuale() {
+      let Numeri = [];
+      var timer2 = setInterval(function() {
+        for (let i = 0; i < 10; i++) {
+          Numeri[i] = Math.floor(Math.random() * 11);
+          document.getElementById("NumeriCasuali").innerHTML = Numeri;
+          document.getElementById("NumeriCasuali").innerHTML += "   ";
+        }
+        let Input = parseInt(document.getElementById("input").value);
+        let appoggio = false;
+        for (i =0 ; i<10; i++) {
+          if (Numeri[i] == Input) {
+            appoggio = true;
+            break;
+          }
+        }
+        if (appoggio == false) {
+          punteggio++;
+        }
+        document.getElementById("punteggio").innerHTML = "punteggio: " + punteggio ;
+      }, 5000);
+    }
+  </script>
+</body>
+
+</html>
