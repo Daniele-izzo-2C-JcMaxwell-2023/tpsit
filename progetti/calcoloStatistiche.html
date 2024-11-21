@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiche Array</title>
+</head>
+<body>
+    <h1>Statistiche per l'array</h1>
+
+    <p><strong>Array:</strong> [3, 4, 2, 5, 1, 6, 4, 2, 7]</p>
+
+    <div>
+        <h3>Risultati:</h3>
+        <p><strong>Media:</strong> <span id="media"></span></p>
+        <p><strong>Varianza:</strong> <span id="varianza"></span></p>
+        <p><strong>Deviazione Standard:</strong> <span id="deviazioneStandard"></span></p>
+        <p><strong>Mediana:</strong> <span id="mediana"></span></p>
+        <p><strong>Moda:</strong> <span id="moda"></span></p>
+    </div>
+
+    <script>
+        class Statistiche {
+            static calcolaMedia(array) {
+                if (array.length === 0) return null;
+                const somma = array.reduce((acc, num) => acc + num, 0);
+                return somma / array.length;
+            }
+
+            static calcolaVarianza(array) {
+                if (array.length === 0) return null;
+                const media = this.calcolaMedia(array);
+                const differenzeQuadrate = array.map(num => Math.pow(num - media, 2));
+                return this.calcolaMedia(differenzeQuadrate);
+            }
+
+            static calcolaDeviazioneStandard(array) {
+                const varianza = this.calcolaVarianza(array);
+                return varianza !== null ? Math.sqrt(varianza) : null;
+            }
+
+            static calcolaMediana(array) {
+                if (array.length === 0) return null;
+                const ordinato = [array].sort((a, b) => a - b);
+                const meta = Math.floor(ordinato.length / 2);
+                return ordinato.length % 2 === 0
+                    ? (ordinato[meta - 1] + ordinato[meta]) / 2
+                    : ordinato[meta];
+            }
+
+            static calcolaModa(array) {
+                if (array.length === 0) return null;
+                const mappaFrequenze = {};
+                array.forEach(num => {
+                    mappaFrequenze[num] = (mappaFrequenze[num] || 0) + 1;
+                });
+
+                const frequenzaMassima = Math.max(Object.values(mappaFrequenze));
+                const modali = Object.keys(mappaFrequenze)
+                    .filter(key => mappaFrequenze[key] === frequenzaMassima)
+                    .map(Number);
+
+                return modali.length === 1 ? modali[0] : modali;
+            }
+        }
+
+        const dati = [3, 4, 2, 5, 1, 6, 4, 2, 7];
+
+        const media = Statistiche.calcolaMedia(dati);
+        const varianza = Statistiche.calcolaVarianza(dati);
+        const deviazioneStandard = Statistiche.calcolaDeviazioneStandard(dati);
+        const mediana = Statistiche.calcolaMediana(dati);
+        const moda = Statistiche.calcolaModa(dati);
+
+        document.getElementById("media").textContent = media !== null ? media : "Non disponibile";
+        document.getElementById("varianza").textContent = varianza !== null ? varianza : "Non disponibile";
+        document.getElementById("deviazioneStandard").textContent = deviazioneStandard !== null ? deviazioneStandard : "Non disponibile";
+        document.getElementById("mediana").textContent = mediana !== null ? mediana : "Non disponibile";
+        document.getElementById("moda").textContent = moda !== null ? moda : "Non disponibile";
+    </script>
+</body>
+</html>
